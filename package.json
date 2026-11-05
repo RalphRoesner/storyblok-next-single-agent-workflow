@@ -1,0 +1,42 @@
+{
+  "name": "storyblok-next-single-agent-workflow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prepareDev": "npm run pull-sb-components && npm run generate-sb-typedefs && npm run dev",
+    "build-tokens": "sass --no-source-map --no-charset src/app/styles/_tailwind_override.scss src/app/styles/tailwind-tokens.generated.css",
+    "predev": "npm run build-tokens",
+    "dev": "next dev",
+    "prebuild": "npm run build-tokens",
+    "build": "next build",
+    "start": "next start",
+    "prettier": "prettier --write .",
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "pull-sb-components": "storyblok components pull --space 296347399073305",
+    "generate-sb-typedefs": "storyblok types generate --space 296347399073305",
+    "ssl-proxy": "npm install -g local-ssl-proxy",
+    "proxy-start": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem"
+  },
+  "dependencies": {
+    "@storyblok/richtext": "^5.4.0",
+    "classnames": "^2.5.1",
+    "next": "16.4.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "storyblok": "^4.26.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "sass": "^1.107.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
